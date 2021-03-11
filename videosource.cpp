@@ -117,6 +117,10 @@ Result HDevice::Start()
 	if (0 == r) {
 		active = true;
 		return Result::Success;
+	} else if (r < 0) {
+		throw "start media server error code : -1";
+	} else {
+		throw "start media server error code : 1";
 	}
 	return Result::Error;
 }
