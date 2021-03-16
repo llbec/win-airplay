@@ -239,47 +239,6 @@ public:
 	static bool EnumAudioDevices(std::vector<AudioDevice> &devices);
 };
 
-#if 0
-struct VideoEncoderConfig {
-	int fpsNumerator;
-	int fpsDenominator;
-	int bitrate;
-	int keyframeInterval;
-	int cx;
-	int cy;
-};
-
-struct EncoderPacket {
-	unsigned char *data;
-	size_t size;
-	long long pts;
-	long long dts;
-};
-
-class VideoEncoder {
-	HVideoEncoder *context;
-
-public:
-	VideoEncoder();
-	~VideoEncoder();
-
-	bool Valid() const;
-	bool Active() const;
-
-	bool ResetGraph();
-
-	bool SetConfig(VideoEncoderConfig &config);
-	bool GetConfig(VideoEncoderConfig &config) const;
-
-	bool Encode(unsigned char *data[DSHOW_MAX_PLANES],
-		    size_t linesize[DSHOW_MAX_PLANES], long long timestampStart,
-		    long long timestampEnd, EncoderPacket &packet,
-		    bool &new_packet);
-
-	//static bool EnumEncoders(std::vector<DeviceId> &encoders);
-};
-#endif
-
 enum class LogType {
 	Error,
 	Warning,

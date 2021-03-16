@@ -23,12 +23,18 @@
 #define VIDEO_PICTURE_QUEUE_SIZE 1
 
 //namespace AirPlay {
+
+struct AirStream;
+
 struct HDevice {
+	unsigned long long sockSvr;
+	unsigned long long sockAcp;
 	unsigned int mediaWidth;
 	unsigned int mediaHeight;
 	int audio_volume;
 	bool active;
 
+	void * stream;
 	VideoConfig videoConfig;
 	AudioConfig audioConfig;
 
@@ -76,13 +82,14 @@ struct HDevice {
 	HDevice();
 	~HDevice();
 
-	inline void SendToCallback(bool video, unsigned char *data, size_t size,
+	/*inline void SendToCallback(bool video, unsigned char *data, size_t size,
 				   long long startTime, long long stopTime,
-				   long rotation);
+				   long rotation);*/
 
 	bool SetVideoConfig(VideoConfig *config);
 	bool SetAudioConfig(AudioConfig *config);
 	bool CreateGraph();
+	bool StartNetwork(int port);
 	Result Start();
 	void Stop();
 };

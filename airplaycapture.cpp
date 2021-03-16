@@ -17,8 +17,8 @@
  *  USA
  */
 
-#include "airplaycapture.hpp"
-#include "videosource.h"
+//#include "airplaycapture.hpp"
+#include "videosource.hpp"
 #include "log.hpp"
 
 #include <vector>
